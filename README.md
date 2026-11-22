@@ -117,6 +117,30 @@ docker build --target production -t auy1102-pipeline:prod .
 
 ---
 
-## 6. Historial de Remediaciones y Evidencias (EA2)
+## 6. Evidencias de Ejecución (Evaluación Parcial N° 3)
+
+### 6.1 Pipeline completo en verde (`pull_request` a `main` — PR #11)
+Ejecución exitosa de los 6 jobs: construcción de imagen Docker y pruebas unitarias dentro del contenedor, SonarCloud (Quality Gate), Snyk, GitHub Advanced Security (Dependency Review + Gitleaks), Docker Scout y publicación en Docker Hub.
+
+![Pipeline CI/CD completo en verde](docs/evidencias/ep3-01-pipeline-pr-success.png)
+
+### 6.2 Interrupción automática del despliegue ante vulnerabilidad crítica (Docker Scout)
+Al detectar el CVE crítico `CVE-2026-4738` en `zlib` de la imagen base, **Docker Scout** marcó fallo y el job **Publish Docker Image to Docker Hub** quedó bloqueado automáticamente (`skipped`) hasta aplicar la remediación (`apk upgrade --no-cache`).
+
+![Bloqueo de despliegue por Docker Scout](docs/evidencias/ep3-02-docker-scout-bloqueo.png)
+
+### 6.3 Análisis estático y Quality Gate en SonarCloud
+Validación del proyecto `Joseantonio777_AUY1102-Pipeline` en SonarCloud con **Quality Gate: Passed** y `0.0%` de duplicaciones.
+
+![SonarCloud Quality Gate Passed](docs/evidencias/ep3-03-sonarcloud-quality-gate.png)
+
+### 6.4 Imagen publicada automáticamente en Docker Hub
+Publicación exitosa de `joseantonio777/auy1102-pipeline` en Docker Hub (`linux/amd64`, imagen de producción multi-stage de ~63 MB).
+
+![Imagen publicada en Docker Hub](docs/evidencias/ep3-04-dockerhub-image.png)
+
+---
+
+## 7. Historial de Remediaciones y Evidencias (EA2)
 
 Las remediaciones previas de vulnerabilidades (eliminación de secretos expuestos, corrección de SSTI en `pug`, actualización de dependencias y habilitación del panel Security de GitHub) se documentan en [docs/evidencias/README.md](docs/evidencias/README.md).
