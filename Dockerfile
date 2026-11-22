@@ -1,7 +1,31 @@
-FROM node:14-alpine3.16
+# Stage 1: Build and test environment
+FROM node:22-alpine AS builder
 
-COPY . .
+WORKDIR /usr/src/app
 
-WORKDIR /usr/src/app/
+COPY package.json package-lock.json ./
+RUN npm install --ignore-scripts --no-audit --no-fund
 
-RUN npm version
+COPY tsconfig.json jest.config.js ./
+COPY src ./src
+COPY test ./test
+
+RUN npm run build
+
+# Stage 2: Minimal production image
+FROM node:22-alpine AS production
+
+RUN apk upgrade --no-cache
+
+WORKDIR /usr/src/app
+
+ENV NODE_ENV=production
+
+COPY package.json package-lock.json ./
+RUN npm install --ignore-scripts --no-audit --no-fund --omit=dev && npm cache clean --force
+
+COPY --from=builder /usr/src/app/dist ./dist
+
+USER node
+
+CMD ["node", "dist/index.js"]
