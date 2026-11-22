@@ -73,7 +73,7 @@ flowchart LR
 |---|---|---|---|
 | **SonarCloud** | `SonarSource/sonarqube-scan-action@v5` + [`sonar-project.properties`](sonar-project.properties) | En cada `pull_request` a `main` | `-Dsonar.qualitygate.wait=true` interrumpe el pipeline si no pasa el Quality Gate. |
 | **Snyk** | CLI oficial (`snyk test` + `snyk code test`) | En cada `pull_request` a `main` | `--severity-threshold=critical` falla si detecta vulnerabilidades críticas en dependencias o código. |
-| **GitHub Advanced Security** | `actions/dependency-review-action@v4`, `gitleaks/gitleaks-action@v2`, [`codeql.yml`](.github/workflows/codeql.yml), [`dependabot.yml`](.github/dependabot.yml) y Secret Scanning / Push Protection | `push` a `develop` y `pull_request` a `main` | `fail-on-severity: critical` en Dependency Review y fallo automático ante secretos detectados. |
+| **GitHub Advanced Security** | `actions/dependency-review-action@v4`, `trufflesecurity/trufflehog@main`, [`codeql.yml`](.github/workflows/codeql.yml), [`dependabot.yml`](.github/dependabot.yml) y Secret Scanning / Push Protection | `push` a `develop` y `pull_request` a `main` | `fail-on-severity: critical` en Dependency Review y fallo automático ante secretos detectados. |
 | **Docker Scout** | `docker/scout-action@v1` (`command: cves`) | Después de construir y probar la imagen | `only-severities: critical` y `exit-code: true` bloquean el despliegue si la imagen tiene CVEs críticos. |
 | **Interrupción de despliegue** | `needs:` + `if: ${{ !failure() && !cancelled() }}` en `publish-dockerhub` | Siempre | Si cualquiera de los jobs previos falla, `publish-dockerhub` se omite (`skipped`) y la imagen no se publica. |
 

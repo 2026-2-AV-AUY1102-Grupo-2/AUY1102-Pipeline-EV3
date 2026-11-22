@@ -131,10 +131,13 @@ jobs:
         with:
           fail-on-severity: critical
 
-      - name: Secret Scanning in Pipeline (Gitleaks)
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Secret Scanning in Pipeline (TruffleHog)
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          head: ${{ github.sha }}
+          extra_args: --only-verified
 
   docker-scout:
     name: Docker Scout Vulnerability Scan
