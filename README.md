@@ -2,7 +2,7 @@
 
 **Asignatura:** AUY1102 - Ciclo de Vida del Software I  
 **Integrantes:** José Villarroel · Fernando Galdamez  
-**Repositorio público:** https://github.com/Joseantonio777/AUY1102-Pipeline  
+**Repositorio público:** https://github.com/2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2  
 **Fork basado en:** `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline`
 
 > La documentación original del proyecto base (inglés) se conserva en [docs/README.en.md](docs/README.en.md) y las evidencias de la Evaluación 2 en [docs/evidencias/README.md](docs/evidencias/README.md).
@@ -53,7 +53,7 @@ flowchart LR
 
 ### Parte 1: Automatización con GitHub Actions y Docker
 
-- **Fork y visibilidad pública:** Fork creado desde `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline` en repositorio público (`Joseantonio777/AUY1102-Pipeline`).
+- **Fork y visibilidad pública:** Fork creado desde `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline` en repositorio público (`2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2`).
 - **Dockerización ([`Dockerfile`](Dockerfile) y [`.dockerignore`](.dockerignore)):**
   - Construcción **multi-stage** sobre `node:22-alpine`.
   - Etapa `builder`: instala dependencias, compila TypeScript (`npm run build`) y sirve para ejecutar la suite de pruebas unitarias dentro del contenedor.
@@ -98,8 +98,8 @@ Además, se eliminaron los tokens hardcodeados de ejemplo presentes en el reposi
 
 ### Con Node.js
 ```bash
-git clone https://github.com/Joseantonio777/AUY1102-Pipeline.git
-cd AUY1102-Pipeline
+git clone https://github.com/2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2.git
+cd 2026-2-AV-AUY1102-Grupo-2
 npm install --ignore-scripts
 npm run build
 npm run test:unit
