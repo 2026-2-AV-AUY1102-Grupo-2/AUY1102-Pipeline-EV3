@@ -1,8 +1,9 @@
 ﻿# AUY1102 - Evaluación Parcial N° 3: Aseguramiento de la Calidad del Software con GitHub y GitHub Actions
 
 **Asignatura:** AUY1102 - Ciclo de Vida del Software I  
+**Docente:** Valeria Muñoz (`@vmunozvaleria`)  
 **Integrantes:** José Villarroel · Fernando Galdamez  
-**Repositorio público:** https://github.com/2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2  
+**Repositorio público:** https://github.com/2026-2-AV-AUY1102-Grupo-2/AUY1102-Pipeline-EV3  
 **Fork basado en:** `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline`
 
 > La documentación original del proyecto base (inglés) se conserva en [docs/README.en.md](docs/README.en.md) y las evidencias de la Evaluación 2 en [docs/evidencias/README.md](docs/evidencias/README.md).
@@ -53,7 +54,7 @@ flowchart LR
 
 ### Parte 1: Automatización con GitHub Actions y Docker
 
-- **Fork y visibilidad pública:** Fork creado desde `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline` en repositorio público (`2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2`).
+- **Fork y visibilidad pública:** Fork creado desde `Fundacion-Instituto-Profesional-Duoc-UC/AUY1102-Pipeline` en repositorio público (`2026-2-AV-AUY1102-Grupo-2/AUY1102-Pipeline-EV3`).
 - **Dockerización ([`Dockerfile`](Dockerfile) y [`.dockerignore`](.dockerignore)):**
   - Construcción **multi-stage** sobre `node:22-alpine`.
   - Etapa `builder`: instala dependencias, compila TypeScript (`npm run build`) y sirve para ejecutar la suite de pruebas unitarias dentro del contenedor.
@@ -98,8 +99,8 @@ Además, se eliminaron los tokens hardcodeados de ejemplo presentes en el reposi
 
 ### Con Node.js
 ```bash
-git clone https://github.com/2026-2-AV-AUY1102-Grupo-8/2026-2-AV-AUY1102-Grupo-2.git
-cd 2026-2-AV-AUY1102-Grupo-2
+git clone https://github.com/2026-2-AV-AUY1102-Grupo-2/AUY1102-Pipeline-EV3.git
+cd AUY1102-Pipeline-EV3
 npm install --ignore-scripts
 npm run build
 npm run test:unit
